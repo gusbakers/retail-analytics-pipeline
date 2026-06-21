@@ -130,6 +130,8 @@ I’d also swap the Matplotlib exports for a Streamlit dashboard. Static charts 
 All visualizations are in `/outputs`. The notebook has them inline with context.
 
 -----
+Master's in Data Science 
+Data Engineer · ML Engineer · AI Engineer
 
 📧 gaft-2727@outlook.com
 
