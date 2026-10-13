@@ -46,13 +46,13 @@ The validation-selected **10% RF / 30% XGBoost / 60% Ridge ensemble** achieves *
 
 [Full model comparison](reports/demo/metrics/forecast_scores.csv) · [Scores for each country/category](reports/demo/metrics/forecast_by_series.csv). The median per-series R² is approximately 0.795, lower than pooled R²; a high global score does not establish uniform performance. Pure Ridge has the best final test MAE here, while the blend was selected using earlier validation. This rerun of an already inspected historical holdout requires independent future confirmation.
 
-## What still fails: weekly SKU units and template NLP
+## Scope, limitations & next steps
 
-**Real SKU forecasts:** I freeze 12 SKU identities before the first validation origin, then compare the same 104-week panel and final 16 weeks. The ensemble has **R² 0.252 and MAE 390.17 units**, while the validation-selected 13-week mean has MAE 304.61. This task **does not meet the R² target** and does not justify choosing the ensemble. [Results](reports/metrics/forecast_scores.csv).
+**Weekly SKU research:** the 12-SKU study records ensemble **R² 0.252 and MAE 390.17 units**, compared with MAE 304.61 for the validation-selected 13-week mean. The simpler baseline remains the stronger reference for this task. Further evaluation needs more complete inventory and promotion history. Cohort selection, zero-sales assumptions and comparisons with the earlier study are explained in the [model cards](docs/model_cards.md). [Calculated results](reports/metrics/forecast_scores.csv).
 
-Unusually large transactions, variable sales and absent inventory/promotion records limit the SKU task. Zero retained sales do not identify a stockout or zero underlying demand. Fixing the cohort before validation changes its membership from the first revision, so the old and new SKU scores are not a like-for-like improvement claim.
+**Sentiment analysis experiment — simulation:** the word/character model records **89.2% accuracy on a random split and 29.3% on unseen template families**, improving on the earlier bigram model's 19.7%. This 650-text bilingual exercise tests generalization; its current results do not establish readiness for real reviews. The next step is human-labelled real text and evaluation by language and domain. [Diagnostic results](reports/metrics/sentiment_simulation.csv) · [Evaluation details](docs/model_cards.md).
 
-**NLP:** word/character TF-IDF improves unseen-template accuracy from 19.7% to 29.3%, but remains unsuitable for real reviews. Random-split accuracy is 89.2% for this model. I include a majority baseline and class F1, preserve negation, and prevent template overlap. The 650 generated bilingual texts still need a real human-labelled replacement before claiming customer-sentiment capability. [Diagnostic results](reports/metrics/sentiment_simulation.csv).
+![Sentiment classification on unseen synthetic template families](reports/figures/sentiment_confusion.png)
 
 ## Data quality and pricing
 
