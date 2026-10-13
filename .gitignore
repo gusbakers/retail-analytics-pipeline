@@ -1,13 +1,21 @@
-# Data & DB (dont upload)
-data/raw/
-data/sqlite/
+# Downloaded and regenerated data
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
 *.db
-
-# Python
-__pycache__/
+*.duckdb
+*.duckdb.wal
+# Local environment and execution
 .venv/
 venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
 .ipynb_checkpoints/
-
-# OS
+.pytest_cache/
+.coverage
+.env
 .DS_Store
+reports/demo/
+reports/.run-*

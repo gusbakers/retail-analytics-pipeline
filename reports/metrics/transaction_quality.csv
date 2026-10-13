@@ -1,0 +1,2 @@
+input_rows,exact_duplicate_rows,invalid_required_rows,cancelled_or_nonpositive_quantity_rows,nonpositive_price_rows,nonproduct_code_rows,retained_rows_without_customer_id,retained_rows,date_min,date_max
+1067371,34335,0,22497,2626,4699,226637,1003214,2009-12-01 07:45:00,2011-12-09 12:50:00
