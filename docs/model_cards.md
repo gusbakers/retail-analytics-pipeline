@@ -31,4 +31,3 @@ Synthetic two-group experiment with 800 unique independent units. Welch mean-dif
 **Metrics:** accuracy, macro-F1 and each class F1 in sentiment_simulation.csv; unseen-template confusion matrix and individual predictions are exported.
 
 **Limits:** labels and wording are generated, ambiguity is simulated, languages are mixed, and no actual customer-review annotations are available. The large performance decline on unseen families prevents claiming readiness for real-world reviews.
-

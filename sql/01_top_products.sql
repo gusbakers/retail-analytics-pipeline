@@ -4,4 +4,3 @@ FROM sales_clean
 GROUP BY product_id
 ORDER BY units_sold DESC, product_id
 LIMIT 10;
-

@@ -21,4 +21,3 @@ jobs:
       - run: ruff check src tests main.py --select E4,E7,E9,F
       - run: ruff format --check src tests main.py
       - run: python -m pytest
-

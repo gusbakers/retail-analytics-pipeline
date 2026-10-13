@@ -25,4 +25,3 @@
 - Pricing with actual randomization, complete unit economics and a predetermined primary outcome.
 
 These are future investigations. They are not claimed as completed business impacts.
-

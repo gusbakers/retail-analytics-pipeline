@@ -43,4 +43,3 @@ The loader writes standard Python paths beneath the checkout; this version was v
 ## After practicing
 
 Stop the Codespace from GitHub **Codespaces → Stop codespace**. If you no longer need its disk, delete that Codespace after keeping any changes in GitHub. This project starts no persistent server, Airflow scheduler or cloud deployment.
-

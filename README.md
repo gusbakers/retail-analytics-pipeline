@@ -110,4 +110,3 @@ My next investigations are forecast stability, inventory availability and real h
 **Attribution:** Daqing Chen, *Online Retail II*, UCI Machine Learning Repository, [DOI 10.24432/C5CG6D](https://doi.org/10.24432/C5CG6D). Data and the bundled excerpt: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Project code: [MIT](LICENSE).
 
 [GitHub profile](https://github.com/gusbakers) · Master's in Data Science
-

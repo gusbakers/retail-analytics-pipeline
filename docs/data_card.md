@@ -63,4 +63,3 @@ No common transaction identity exists across UCI sales, pricing and feedback. Sh
 - **data/samples/uci_transactions_sample.csv:** 300 rows sampled from the actual two-sheet UCI source with seed 42. Useful for schema inspection; not used to estimate full-dataset totals.
 - **data/samples/grocery_transactions_demo.csv:** the original 30-row demo. It has no prices and is not the Instacart competition dataset. Kept as a historical reference, outside the new pipeline.
 - Large raw data, DuckDB and regenerated processed tables are ignored by Git. The download URL, source/cache checksums, versions and execution configuration are recorded in reports/metrics/run.json.
-
