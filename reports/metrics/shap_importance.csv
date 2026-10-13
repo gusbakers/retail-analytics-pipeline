@@ -1,0 +1,24 @@
+feature,mean_abs_shap
+numeric__week_sin,159.6009292455388
+numeric__rolling_avg_4wk,103.30164897466928
+numeric__price_lag_1,81.26102148987772
+numeric__lag_4,63.90748337524777
+numeric__rolling_avg_2wk,58.170501224491964
+numeric__lag_1,45.964048172667475
+numeric__lag_2,24.470619605111597
+numeric__week_cos,22.205806811697588
+category__segment_84077,18.873320757179087
+category__segment_21212,13.724002645318839
+category__segment_22197,11.380801230463497
+category__segment_21977,3.7287760668223036
+category__segment_22178,3.6487741542579664
+category__segment_84879,3.4095090580802547
+category__segment_17003,2.87653014763
+category__segment_85099B,2.8555088243824285
+category__segment_84991,1.8609098913965223
+category__segment_84755,0.8028702460627584
+category__segment_15036,0.7990748067959865
+category__segment_85123A,0.6731498616310301
+numeric__is_high_demand,0.4492806296380644
+numeric__high_demand_rd,0.0
+category__country_United Kingdom,0.0

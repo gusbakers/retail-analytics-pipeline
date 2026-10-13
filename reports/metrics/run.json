@@ -1,0 +1,136 @@
+{
+  "source_mode": "real",
+  "executed_at_utc": "2026-10-13T02:46:39.608622+00:00",
+  "sales_source": {
+    "source": "UCI Online Retail II",
+    "source_url": "https://archive.ics.uci.edu/dataset/502/online+retail+ii",
+    "license": "CC BY 4.0",
+    "currency": "GBP",
+    "zip_sha256": "572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb",
+    "raw_rows": 1067371,
+    "sheets": [
+      "Year 2009-2010",
+      "Year 2010-2011"
+    ],
+    "cache_sha256": "7a588323e64297016a71f0f8465fe5907ac92496decc1d5a231f44f5ebb01ebc"
+  },
+  "transaction_quality": {
+    "input_rows": 1067371,
+    "exact_duplicate_rows": 34335,
+    "invalid_required_rows": 0,
+    "cancelled_or_nonpositive_quantity_rows": 22497,
+    "nonpositive_price_rows": 2626,
+    "nonproduct_code_rows": 4699,
+    "retained_rows_without_customer_id": 226637,
+    "retained_rows": 1003214,
+    "date_min": "2009-12-01 07:45:00",
+    "date_max": "2011-12-09 12:50:00"
+  },
+  "forecast_scope": {
+    "forecast_country": "United Kingdom",
+    "selected_series": [
+      "84077",
+      "85123A",
+      "85099B",
+      "17003",
+      "21212",
+      "84879",
+      "22197",
+      "21977",
+      "15036",
+      "84991",
+      "84755",
+      "22178"
+    ],
+    "selection": "Top training-volume SKUs active in at least 26 training weeks",
+    "example_series": "84077",
+    "labels": {
+      "84077": "WORLD WAR 2 GLIDERS ASSTD DESIGNS",
+      "85123A": "WHITE HANGING HEART T-LIGHT HOLDER",
+      "85099B": "JUMBO BAG RED RETROSPOT",
+      "17003": "BROCADE RING PURSE",
+      "21212": "PACK OF 72 RETROSPOT CAKE CASES",
+      "84879": "ASSORTED COLOUR BIRD ORNAMENT",
+      "22197": "POPCORN HOLDER",
+      "21977": "PACK OF 60 PINK PAISLEY CAKE CASES",
+      "15036": "ASSORTED COLOURS SILK FAN",
+      "84991": "60 TEATIME FAIRY CAKE CASES",
+      "84755": "COLOUR GLASS T-LIGHT HOLDER HANGING",
+      "22178": "VICTORIAN GLASS HANGING T-LIGHT"
+    },
+    "first_complete_week": "2009-12-07",
+    "last_complete_week": "2011-11-28",
+    "cutoff": "2011-08-15",
+    "holdout_weeks": 16,
+    "target": "Paid positive units sold; cancellations/returns excluded",
+    "zero_policy": "No paid sales recorded for a selected SKU in a covered week",
+    "availability_limit": "Inventory and stockouts are not observed"
+  },
+  "weekly_quality": {
+    "rows": 1248,
+    "series": 12,
+    "weeks": 104,
+    "missing_by_column": {
+      "segment": 0,
+      "week_start": 0,
+      "units_sold": 0,
+      "avg_price": 33,
+      "country": 0
+    }
+  },
+  "weekly_csv_sha256": "e5cfbf3947a5d1521bf46cb71890d2aeff74978319f2702212e3fd070713b455",
+  "forecast": {
+    "train_rows": 1008,
+    "test_rows": 192,
+    "numeric_features": [
+      "lag_1",
+      "lag_2",
+      "lag_4",
+      "rolling_avg_2wk",
+      "rolling_avg_4wk",
+      "week_sin",
+      "week_cos",
+      "price_lag_1",
+      "is_high_demand",
+      "high_demand_rd"
+    ],
+    "high_demand_threshold": 1583.85,
+    "rf_trees": 200,
+    "xgb_trees": 300,
+    "ensemble_weights": [
+      0.5,
+      0.5
+    ],
+    "horizon": "one week, observed history updated between predictions"
+  },
+  "simulations": {
+    "pricing": {
+      "seed": 2427,
+      "rows": 800,
+      "cost_assumption": "45% of regular unit price",
+      "currency": "USD"
+    },
+    "feedback": {
+      "seed": 2240,
+      "rows": 650,
+      "template_families": 36,
+      "evaluation": "random stratified and group-held-out templates"
+    }
+  },
+  "shap": {
+    "sample_n": 80,
+    "reference": "training tree-path counts",
+    "max_additivity_error": 0.0011047199361655657
+  },
+  "package_versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.8",
+    "openpyxl": "3.1.5",
+    "duckdb": "1.5.6",
+    "xgboost-cpu": "3.1.3",
+    "shap": "0.50.0"
+  }
+}

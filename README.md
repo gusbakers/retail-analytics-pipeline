@@ -1,138 +1,113 @@
-# Instacart Grocery Analytics
+# Market Insights & Forecasting
 
-![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
-![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green)
+**Retail sales, forecasting, pricing and consumer feedback - built by Gustavo.**
 
------
+This repository started as a small SQL demo. I expanded it to answer a more useful question: **what evidence would I need before recommending an inventory, pricing or model decision?**
 
-I kept seeing Instacart mentioned in data job descriptions — “analyze purchase patterns”, “improve reorder predictions” — so I figured I’d actually dig into their public dataset and see what that work looks like in practice.
+The main analysis uses actual [UCI Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) transactions. I integrated the methods from my four-week analytics exercises: quality, forecasting, model comparison, SHAP, pricing and NLP. Pricing and feedback are clearly labelled **independent simulations**, with no invented link to the retailer.
 
-The dataset is from a [2017 Kaggle competition](https://www.kaggle.com/competitions/instacart-market-basket-analysis/data): 3.4M orders, ~200K users, 50K products. I focused on SQL analytics — the kind of questions an ops or inventory team would actually ask.
-
------
-
-## What I was trying to figure out
-
-- Which products do people reliably come back for vs. buy once and forget?
-- When are orders actually placed — and what does that mean for staffing?
-- Do departments have meaningfully different reorder rates?
-- Is basket size correlated with anything actionable (like organic produce)?
-
------
-
-## How it’s structured
-
-```
-instacart-analytics/
-├── data/raw/                        # not committed — see setup below
-├── sql/
-│   ├── 01_reorder_rates.sql
-│   ├── 02_demand_by_hour.sql
-│   ├── 03_top_products.sql
-│   ├── 04_basket_analysis.sql
-│   └── 05_department_retention.sql
-├── notebooks/
-│   └── instacart_demo.ipynb
-├── outputs/                         # charts, committed
-├── src/
-│   ├── ingest.py
-│   └── clean.py
-├── requirements.txt
-└── run_pipeline.py
-```
-
-The pipeline goes: CSVs → SQLite → SQL queries → exported charts. `run_pipeline.py` handles all of it.
-
------
-
-## Setup
-
-```bash
-git clone https://github.com/yourusername/instacart-analytics.git
-cd instacart-analytics
-pip install -r requirements.txt
-```
-
-Download the data from Kaggle (free account needed):
-https://www.kaggle.com/competitions/instacart-market-basket-analysis/data
-
-Unzip into `data/raw/` so you have:
-
-```
-orders.csv
-order_products__prior.csv
-order_products__train.csv
-products.csv
-departments.csv
-aisles.csv
-```
-
-Then:
-
-```bash
-python run_pipeline.py
-jupyter notebook notebooks/instacart_demo.ipynb
-```
-
------
+Python · SQL / DuckDB · pandas · scikit-learn · XGBoost · SHAP · SciPy · Matplotlib
 
 ## What I found
 
-**Reorder rates by department**
-Produce sits at ~65% reorder rate. Personal care is around 38%. Makes sense — people buy bananas every week, they don’t reorder face wash at the same cadence. The gap is useful for inventory planning: tight stock management for high-reorder categories, more slack for low-reorder ones.
+| Question | Evidence from the recorded run |
+|---|---|
+| Which sales can I analyze? | 1,003,214 paid positive product lines retained from 1,067,371 original rows, with every exclusion counted |
+| Does ML improve the next-week forecast? | The last-week baseline has lower MAE than RF, XGBoost and their fixed average |
+| Does a discount improve margin? | Simulated revenue and volume increase, but the margin interval includes zero |
+| Does random-split sentiment accuracy generalize? | Bigram logistic regression achieves 92.3% on the random split but only 19.7% on unseen template families |
 
-**Order timing**
-Peak is 10am–2pm on weekends. Weeknight orders (8pm–midnight) basically drop off. Top hours:
+## Real sales and forecasting
 
+The source is one UK-based online giftware retailer, **December 2009 to December 2011**, with prices in **GBP**. The forecasting panel contains **12 UK SKUs selected using training volume**, across **104 complete weeks**. The final **16-week holdout begins 15 August 2011**.
+
+The target is positive paid units sold; returns/cancellations are excluded and audited. Recorded sales do not identify unconstrained demand or stock availability. A one-week forecast uses observed previous weeks, including already observed holdout weeks; it does not predict the whole holdout from a single date.
+
+![Weekly recorded sales](reports/figures/weekly_sales.png)
+
+| Model | MAE, units ↓ | R² | WAPE ↓ |
+|---|---:|---:|---:|
+| Last-week baseline | 408.45 | -0.096 | 66.6% |
+| Random Forest | 454.03 | -0.020 | 74.0% |
+| XGBoost | 517.54 | -0.409 | 84.3% |
+| Ensemble (50/50) | 479.40 | -0.168 | 78.1% |
+
+**My decision:** this test does not justify deploying the ensemble as an improvement over the last-week baseline. Negative R² and weaker model results remain visible. I would investigate series stability and inventory availability before recommending additional model complexity.
+
+The comparison includes three earlier temporal validation folds and training-only imputation, encoding and thresholds. Parameters and 50/50 weights are fixed before final evaluation. [Calculated scores](reports/metrics/forecast_scores.csv) · [Predictions](reports/metrics/forecast_predictions.csv) · [Model cards](docs/model_cards.md).
+
+![Baseline vs. complex models](reports/figures/model_comparison.png)
+
+![Observed sales and forecast](reports/figures/forecast_vs_actual.png)
+
+SHAP uses each tree model's training-path reference. Averaged contributions and base values reconstruct the ensemble; the [additivity audit](reports/metrics/shap_additivity.csv) is exported.
+
+![What drives the ensemble](reports/figures/shap_global.png)
+
+## Pricing and NLP simulations
+
+**Pricing:** 800 independent generated experimental units, an 8% discount and assumed costs. Welch intervals and Holm correction distinguish revenue, units and contribution margin. The scenario does not establish a margin increase or a real retailer profit impact.
+
+![Simulated pricing effects](reports/figures/pricing_effects.png)
+
+**NLP:** 650 bilingual template-generated reviews, with synthetic labels. Unique complete texts can share phrases, so I also hold out entire template families. The large performance decline prevents claiming readiness for human-labelled real reviews.
+
+![Sentiment on unseen templates](reports/figures/sentiment_confusion.png)
+
+Shared country/category names do not justify joining these simulations to the real sales. See the [data card](docs/data_card.md) for sources, field definitions, seeds and assumptions.
+
+## Folder structure
+
+| Path | Purpose |
+|---|---|
+| data/raw/ | Public download and verified cache; ignored by Git |
+| data/processed/ | Recreated panels, scenarios and DuckDB; ignored by Git |
+| data/samples/ | Attributed 300-row UCI excerpt and original 30-row demo |
+| notebooks/01_data_quality.ipynb | Ingestion, quality, SQL and exploration |
+| notebooks/02_demand_forecasting.ipynb | Baselines, temporal evaluation and SHAP |
+| notebooks/03_pricing_experiments.ipynb | Simulated pricing and contribution margin |
+| notebooks/04_consumer_sentiment.ipynb | Simulated feedback and unseen-template evaluation |
+| src/market_insights/ | Shared code used by notebooks and CLI |
+| sql/ | Five queries with correct weekday/hour semantics |
+| reports/figures/ | Exported charts with source and scope |
+| reports/metrics/ | Scores, predictions, tests and run provenance |
+| docs/ | Data card, model cards, decisions and usage |
+| tests/ | Contracts, temporal integrity, SQL and pipeline smoke test |
+| .github/workflows/ci.yml | Python 3.11/3.12 checks |
+| .devcontainer/ | Codespaces environment |
+| main.py · pyproject.toml · requirements.txt | Entry point, package and dependencies |
+
+## Run in Codespaces
+
+Open **Code → Codespaces → Create codespace**. The dev container installs notebook and SHAP dependencies. Then:
+
+```bash
+python main.py --source real --explain
+python -m pytest
 ```
-10:00 → 284,728 orders
-11:00 → 268,916 orders
-14:00 → 231,482 orders
+
+For another Python environment, from the repository root:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python main.py --source real --explain
 ```
 
-If you’re thinking about fulfillment capacity, Sunday morning is where it matters.
+To use only the original weekly demand simulation without downloading UCI:
 
-**Bananas are a weird anchor product**
-They’re #1 in both volume and reorder rate. My read: people open the app specifically to buy bananas and fill the basket around that. Organic milk, Greek yogurt, avocados follow a similar pattern.
+```bash
+python main.py --source demo --explain
+```
 
-**Organic produce and basket size**
-Orders that include organic produce items average ~1.4x the basket size of orders without. That’s an interesting promotional angle — lead with organic, not discounts.
+Demo outputs remain separate, under **reports/demo/**. The first real run reads the two-year workbook; subsequent runs verify and reuse a cache. Notebook 01 prepares the panel used by 02; pricing and sentiment can also run independently. [Detailed usage and Databricks notes](docs/usage.md).
 
------
+## Verification and sources
 
-## One thing that surprised me
+The full real and demo pipelines were executed, including SHAP. The **14 automated tests** cover cleaning, time features, SQL dates/hours, pricing joins, unseen-template vocabulary and an end-to-end demo run.
 
-The reorder interval data was more consistent than I expected. For top products, the median days-between-orders is pretty tight — most people reorder bananas every 7 days, not “roughly weekly.” That kind of regularity is actually useful for demand forecasting.
+My next investigations are forecast stability, inventory availability and real human-labelled text. These are future steps, not claimed business impacts. [Decisions I can explain in an interview](docs/decisions.md).
 
-Also: `add_to_cart_order` ended up being a decent signal. Products added first tend to have higher reorder rates — people build routines around how they shop.
+**Attribution:** Daqing Chen, *Online Retail II*, UCI Machine Learning Repository, [DOI 10.24432/C5CG6D](https://doi.org/10.24432/C5CG6D). Data and the bundled excerpt: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Project code: [MIT](LICENSE).
 
------
+[GitHub profile](https://github.com/gusbakers) · Master's in Data Science
 
-## Why SQLite and not Postgres
-
-The dataset is a static snapshot, single user, no ingestion happening. Standing up a Postgres server for this would’ve been overkill. SQLite handles 3.4M rows fine and runs anywhere.
-
-If this were a live pipeline with multiple analysts, Postgres would make sense. This isn’t that.
-
------
-
-## What I’d do differently
-
-The SQL is all flat files right now. I’d use dbt if I revisited this — proper staging/mart layers would make the queries easier to test and the lineage clearer.
-
-I’d also swap the Matplotlib exports for a Streamlit dashboard. Static charts work but they’re harder to share.
-
------
-
-## Charts
-
-All visualizations are in `/outputs`. The notebook has them inline with context.
-
------
-Master's in Data Science 
-Data Engineer · ML Engineer · AI Engineer
-
-📧 gaft-2727@outlook.com
-
- 
