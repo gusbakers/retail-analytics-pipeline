@@ -1,24 +1,74 @@
 feature,mean_abs_shap
-numeric__week_sin,159.6009292455388
-numeric__rolling_avg_4wk,103.30164897466928
-numeric__price_lag_1,81.26102148987772
-numeric__lag_4,63.90748337524777
-numeric__rolling_avg_2wk,58.170501224491964
-numeric__lag_1,45.964048172667475
-numeric__lag_2,24.470619605111597
-numeric__week_cos,22.205806811697588
-category__segment_84077,18.873320757179087
-category__segment_21212,13.724002645318839
-category__segment_22197,11.380801230463497
-category__segment_21977,3.7287760668223036
-category__segment_22178,3.6487741542579664
-category__segment_84879,3.4095090580802547
-category__segment_17003,2.87653014763
-category__segment_85099B,2.8555088243824285
-category__segment_84991,1.8609098913965223
-category__segment_84755,0.8028702460627584
-category__segment_15036,0.7990748067959865
-category__segment_85123A,0.6731498616310301
-numeric__is_high_demand,0.4492806296380644
-numeric__high_demand_rd,0.0
+numeric__week_sin,125.39409258259198
+numeric__rolling_avg_13wk,63.1948628806353
+numeric__rolling_avg_8wk,61.374451468738165
+numeric__rolling_avg_4wk,29.682213459813653
+numeric__rolling_avg_2wk,28.930963061171262
+numeric__rolling_median_13wk,24.980638844884023
+numeric__rolling_std_13wk,23.475127876376682
+numeric__lag_4,19.87178195791696
+numeric__rolling_avg_26wk,18.817273097773544
+numeric__lag_1,17.152937754075502
+numeric__lag_52,16.700434502382308
+numeric__price_lag_1,12.266899220681136
+numeric__missingindicator_lag_52,8.826384170565262
+numeric__week_cos,8.59816960238633
+numeric__lag_2,6.2265695621164445
+numeric__trend_4_to_13,5.1438480425929844
+numeric__lag_26,5.068063923176625
+numeric__lag_8,4.743298651349644
+seasonal__series_key_United Kingdom/17003_sin,4.602616777857793
+numeric__lag_13,4.462789137682733
+numeric__zero_share_13wk,2.9837201641111157
+seasonal__series_key_United Kingdom/84879_sin,1.8130580711294506
+category__segment_21982,1.0982549362566123
+category__series_key_United Kingdom/21982,0.9985846242486337
+seasonal__series_key_United Kingdom/22197_sin,0.6771429292857647
+seasonal__series_key_United Kingdom/21982_cos,0.650471169277081
+seasonal__series_key_United Kingdom/84077_sin,0.5940666266572436
+category__series_key_United Kingdom/84077,0.4664221811046267
+seasonal__series_key_United Kingdom/17003_cos,0.37277866865765236
+category__series_key_United Kingdom/17003,0.34631388447058853
+numeric__missingindicator_lag_26,0.265237772048841
+category__segment_84077,0.19131618722495916
+category__segment_21232,0.1746950195170939
+seasonal__series_key_United Kingdom/84077_cos,0.1727045181491726
+category__segment_21977,0.13327238212233
+seasonal__series_key_United Kingdom/84879_cos,0.08366761963787475
+seasonal__series_key_United Kingdom/85123A_sin,0.07467978186354841
+category__segment_22197,0.06075058437161177
+seasonal__series_key_United Kingdom/85099B_sin,0.058945126068567534
+category__series_key_United Kingdom/21977,0.04692453832897877
+category__series_key_United Kingdom/21212,0.0348845498633811
+category__segment_85123A,0.0332486077463798
+category__series_key_United Kingdom/21213,0.0
+category__segment_84991,0.0
+category__segment_85099B,0.0
+category__series_key_United Kingdom/21232,0.0
+category__segment_21213,0.0
+category__segment_17003,0.0
+category__segment_21212,0.0
+numeric__missingindicator_lag_8,0.0
+numeric__is_high_demand,0.0
+numeric__missingindicator_lag_13,0.0
 category__country_United Kingdom,0.0
+category__segment_84879,0.0
+category__series_key_United Kingdom/84991,0.0
+category__series_key_United Kingdom/84879,0.0
+category__series_key_United Kingdom/22197,0.0
+seasonal__series_key_United Kingdom/21232_cos,0.0
+seasonal__series_key_United Kingdom/21232_sin,0.0
+seasonal__series_key_United Kingdom/21213_cos,0.0
+seasonal__series_key_United Kingdom/21213_sin,0.0
+seasonal__series_key_United Kingdom/21212_cos,0.0
+seasonal__series_key_United Kingdom/21212_sin,0.0
+category__series_key_United Kingdom/85099B,0.0
+category__series_key_United Kingdom/85123A,0.0
+seasonal__series_key_United Kingdom/22197_cos,0.0
+seasonal__series_key_United Kingdom/21977_sin,0.0
+seasonal__series_key_United Kingdom/21977_cos,0.0
+seasonal__series_key_United Kingdom/21982_sin,0.0
+seasonal__series_key_United Kingdom/84991_cos,0.0
+seasonal__series_key_United Kingdom/84991_sin,0.0
+seasonal__series_key_United Kingdom/85099B_cos,0.0
+seasonal__series_key_United Kingdom/85123A_cos,0.0

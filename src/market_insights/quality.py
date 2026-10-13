@@ -1,5 +1,6 @@
 """Transaction contracts and auditable cleaning rules."""
 
+import numpy as np
 import pandas as pd
 
 ALIASES = {
@@ -51,7 +52,11 @@ def clean_transactions(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
         | df.order_id.eq("")
         | df.product_id.eq("")
         | df.country.eq("")
+        | ~np.isfinite(df.quantity)
+        | ~np.isfinite(df.unit_price)
     )
+    with np.errstate(over="ignore", invalid="ignore"):
+        invalid |= ~np.isfinite(df.quantity * df.unit_price)
     audit["invalid_required_rows"] = int(invalid.sum())
     df = df.loc[~invalid].copy()
     cancelled = df.order_id.str.upper().str.startswith("C") | df.quantity.le(0)
@@ -89,13 +94,35 @@ def validate_weekly(df: pd.DataFrame) -> dict:
     required = {"week_start", "country", "segment", "units_sold", "avg_price"}
     if not required.issubset(df):
         raise ValueError(f"Weekly data must include {sorted(required)}.")
+    if df.empty or df.columns.duplicated().any():
+        raise ValueError("Weekly data must be nonempty with unique column names.")
     if df.duplicated(["week_start", "country", "segment"]).any():
         raise ValueError("Duplicate country/segment/week keys.")
     if df[["week_start", "country", "segment", "units_sold"]].isna().any().any():
         raise ValueError("Missing weekly keys or target.")
+    if (
+        not pd.api.types.is_numeric_dtype(df.units_sold)
+        or not np.isfinite(df.units_sold).all()
+    ):
+        raise ValueError("Weekly targets must be finite numeric values.")
     if (df.units_sold < 0).any():
         raise ValueError("Negative weekly sales.")
-    dates = pd.to_datetime(df.week_start)
+    price = pd.to_numeric(df.avg_price, errors="coerce")
+    if (
+        df.avg_price.notna() & (price.isna() | ~np.isfinite(price) | price.le(0))
+    ).any():
+        raise ValueError("Observed weekly prices must be finite and positive.")
+    if (
+        df[["country", "segment"]]
+        .astype("string")
+        .apply(lambda col: col.str.strip().eq(""))
+        .any()
+        .any()
+    ):
+        raise ValueError("Weekly country/segment keys cannot be blank.")
+    dates = pd.to_datetime(df.week_start, errors="coerce")
+    if dates.isna().any():
+        raise ValueError("Invalid weekly dates.")
     if not dates.dt.dayofweek.eq(0).all():
         raise ValueError("week_start must be Monday.")
     gaps = (
@@ -107,6 +134,13 @@ def validate_weekly(df: pd.DataFrame) -> dict:
     )
     if not gaps.eq(pd.Timedelta(days=7)).all():
         raise ValueError("The panel must have contiguous weekly records.")
+    coverage = (
+        df.assign(week_start=dates)
+        .groupby(["country", "segment"])
+        .week_start.agg(["min", "max", "count"])
+    )
+    if coverage.nunique().gt(1).any():
+        raise ValueError("All series must share the same covered calendar weeks.")
     return {
         "rows": len(df),
         "series": int(df.groupby(["country", "segment"]).ngroups),
