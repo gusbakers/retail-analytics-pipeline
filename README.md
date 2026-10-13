@@ -1,6 +1,6 @@
 # Market Insights & Forecasting
 
-I use historical transactions to answer a practical question: **how many paid orders should a fulfilment team expect tomorrow?** I also test weekly SKU forecasts and apply the methods from my four-week NielsenIQ-inspired exercises: data quality, forecasting, SHAP, pricing and NLP.
+I built this project to explore how retail data can support everyday decisions, starting with a simple question: **how many paid orders should a fulfilment team expect tomorrow?** I also explored weekly SKU forecasting, pricing and sentiment analysis.
 
 The transaction analysis and daily forecasts use **real UCI Online Retail II data**. The Nielsen demand, pricing and feedback exercises are **independent simulations**. Their results stay separate.
 
