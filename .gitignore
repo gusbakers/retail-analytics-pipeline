@@ -17,5 +17,6 @@ __pycache__/
 .coverage
 .env
 .DS_Store
-reports/demo/
+reports/investigation/
+.ruff_cache/
 reports/.run-*

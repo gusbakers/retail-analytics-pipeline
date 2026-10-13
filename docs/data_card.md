@@ -37,12 +37,25 @@ Returns and free/nonproduct lines remain part of the original download, but are 
 ### Forecasting panel
 
 - 104 complete covered calendar weeks, 7 December 2009 to 28 November 2011.
-- United Kingdom only, 12 SKUs selected using **training** volume and at least 26 active training weeks.
+- United Kingdom only, 12 SKUs selected using volume and at least 26 active weeks **before the first validation origin** (28 February 2011).
 - 1,248 SKU-week records. Zero means no retained paid sales recorded in a covered week; stock availability is unknown.
 - Final 16-week holdout begins 15 August 2011. Four initial weeks per SKU are removed when constructing lag features.
 - Price features use the last observed price. No future week's average price, promotion flag or retailer cost is invented.
 - Target: weekly positive paid units sold, not unconstrained market demand.
-- Three earlier 8-week temporal validation folds remain outside the final test.
+- Three earlier 8-week temporal validation folds remain outside the final test. The cohort is fixed before those folds; it differs from the initial version selected using all final-training weeks.
+- Long lags (8, 13, 26, 52), shifted rolling means/median/variation and country/category seasonal terms supplement short lags. Missing long history is imputed inside training; no future target is filled into a lag.
+
+## Real daily operations target
+
+This is a separate target from SKU demand: distinct retained paid UK order IDs within each recorded date, for an historical next-day workload-planning exercise. All UK SKUs enter the count; no validation/test-popularity selection occurs.
+
+- 728 consecutive covered days, 7 December 2009–4 December 2011. The boundary incomplete weeks are excluded consistently with the weekly panel.
+- Zero means no retained order was recorded that day. It does not prove a closure or the absence of unconstrained demand.
+- 28 initial warm-up days are omitted. The final 112-day holdout starts 15 August 2011; 588 earlier feature rows train the final model.
+- Three earlier 28-day validation folds start 23 May 2011 and end 14 August 2011.
+- Lags 1/2/7/14/28/364, prior rolling means, weekday, annual calendar harmonics, time trend and calendar flags are available at forecast time. No future quantity, customer, price, revenue or order count is used.
+- The target counts IDs within a recorded date; a source ID recorded on different dates can enter each date. Source dates retain the recorded convention.
+- This observational target measures recorded paid-order workload. It does not estimate inventory replenishment quantities, current market demand or causal staffing savings.
 
 ## Independent learning simulations
 

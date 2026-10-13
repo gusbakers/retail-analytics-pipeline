@@ -1,0 +1,135 @@
+{
+  "source_mode": "demo",
+  "executed_at_utc": "2026-10-13T07:02:40.748743+00:00",
+  "sales_source": {
+    "source": "Week 2 demand simulation",
+    "seed": 42,
+    "currency": "USD"
+  },
+  "forecast_scope": {
+    "example_series": "Beverages",
+    "example_country": "Dominican Republic",
+    "cutoff": "2022-01-03",
+    "selection": "All 36 synthetic country/category series",
+    "target": "Simulated units",
+    "covariate_assumption": "Demo promotion, holiday and market indices known at prediction time"
+  },
+  "weekly_quality": {
+    "rows": 3744,
+    "series": 36,
+    "weeks": 104,
+    "missing_by_column": {
+      "week_start": 0,
+      "country": 0,
+      "segment": 0,
+      "month": 0,
+      "units_sold_prior_week": 0,
+      "avg_price": 0,
+      "promo_intensity": 0,
+      "holiday_flag": 0,
+      "competitor_price_index": 56,
+      "economic_index": 0,
+      "units_sold": 0
+    }
+  },
+  "weekly_csv_sha256": "5392a2e0a3ca76940f14d092343052109b308175868b3af819b3ac605259571d",
+  "forecast": {
+    "train_rows": 1728,
+    "test_rows": 1872,
+    "numeric_features": [
+      "lag_1",
+      "lag_2",
+      "lag_4",
+      "rolling_avg_2wk",
+      "rolling_avg_4wk",
+      "lag_8",
+      "lag_13",
+      "lag_26",
+      "lag_52",
+      "rolling_avg_8wk",
+      "rolling_avg_13wk",
+      "rolling_avg_26wk",
+      "rolling_median_13wk",
+      "rolling_std_13wk",
+      "zero_share_13wk",
+      "trend_4_to_13",
+      "week_sin",
+      "week_cos",
+      "price_lag_1",
+      "is_high_demand",
+      "high_demand_rd",
+      "promo_intensity",
+      "holiday_flag",
+      "competitor_price_index",
+      "economic_index",
+      "promo_x_holiday"
+    ],
+    "high_demand_threshold": 804.0,
+    "rf_trees": 200,
+    "xgb_trees": 300,
+    "selection": {
+      "config": "smooth",
+      "ensemble_weights": [
+        0.1,
+        0.3,
+        0.6
+      ],
+      "selection_metric": "pooled pre-test MSE",
+      "validation_rows": 864,
+      "validation_start": "2021-07-19",
+      "validation_end": "2021-12-27",
+      "best_validation_baseline": "rolling_4",
+      "validation_ensemble": {
+        "mae": 34.527047591034304,
+        "r2": 0.9408037997190093,
+        "wape": 0.06851218284691143
+      }
+    },
+    "ensemble_weights": [
+      0.1,
+      0.3,
+      0.6
+    ],
+    "r2_target": 0.8,
+    "r2_target_met": true,
+    "beats_validation_selected_baseline_mae": true,
+    "evaluation_status": "Retrospective evaluation of the previously published holdout; independent future confirmation remains required.",
+    "horizon": "one week, observed history updated between predictions"
+  },
+  "simulations": {
+    "pricing": {
+      "seed": 2427,
+      "rows": 800,
+      "cost_assumption": "45% of regular unit price",
+      "currency": "USD"
+    },
+    "feedback": {
+      "seed": 2240,
+      "rows": 650,
+      "template_families": 36,
+      "evaluation": "random stratified and group-held-out templates"
+    }
+  },
+  "shap": {
+    "sample_n": 80,
+    "reference": "training tree-path counts for trees; training feature means for linear terms",
+    "ensemble_weights": [
+      0.1,
+      0.3,
+      0.6
+    ],
+    "postprocessing": "Component forecasts floored at zero; exact correction exported separately",
+    "max_additivity_error": 0.00021581805765436002
+  },
+  "package_versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.8",
+    "openpyxl": "3.1.5",
+    "duckdb": "1.5.6",
+    "xgboost-cpu": "3.1.3",
+    "shap": "0.50.0"
+  }
+}

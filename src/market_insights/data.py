@@ -80,7 +80,10 @@ def load_transactions(raw_dir: Path) -> tuple[pd.DataFrame, dict]:
 
 
 def real_weekly(
-    clean: pd.DataFrame, holdout_weeks: int = 16, top_n: int = 12
+    clean: pd.DataFrame,
+    holdout_weeks: int = 16,
+    top_n: int = 12,
+    selection_validation_weeks: int = 24,
 ) -> tuple[pd.DataFrame, pd.Timestamp, dict]:
     """UK top SKUs selected on training sales; complete calendar weeks only."""
     minimum = clean.order_date.min().normalize()
@@ -96,7 +99,9 @@ def real_weekly(
     uk = clean.loc[clean.country.eq("United Kingdom")].copy()
     uk["week_start"] = uk.order_date.dt.to_period("W-SUN").dt.start_time
     uk = uk.loc[uk.week_start.between(first, last)]
-    history = uk.loc[uk.week_start < cutoff]
+    selection_cutoff = cutoff - pd.Timedelta(weeks=selection_validation_weeks)
+    # Fix the business cohort before the FIRST validation fold, not after it.
+    history = uk.loc[uk.week_start < selection_cutoff]
     activity = history.groupby("product_id").week_start.nunique()
     eligible = activity[activity >= 26].index
     ranked = (
@@ -131,8 +136,10 @@ def real_weekly(
     metadata = {
         "forecast_country": "United Kingdom",
         "selected_series": selected,
-        "selection": "Top training-volume SKUs active in at least 26 training weeks",
+        "selection": "Top-volume SKUs active in at least 26 weeks before the first validation origin",
+        "selection_cutoff": str(selection_cutoff.date()),
         "example_series": selected[0],
+        "example_country": "United Kingdom",
         "labels": {s: str(descriptions.get(s, s)) for s in selected},
         "first_complete_week": str(first.date()),
         "last_complete_week": str(last.date()),

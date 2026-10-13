@@ -1,0 +1,148 @@
+feedback_id,review_text,sentiment_label,template_id,predicted
+FB-0005,"It's ok, nothing special. Lo encontré en el supermercado. Edición habitual. I opened it after lunch.",neutral,"It's ok, nothing special.",neutral
+FB-0012,"Fresh and reliable, I recommend it. Lo compré para la familia. The usual size. I used it during the weekend.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0014,Very happy with this purchase. It was part of my weekly shopping. Regular package. Delivery was on Friday.,positive,Very happy with this purchase.,negative
+FB-0024,Good packaging but average quality. I tried it after a friend mentioned it. Presentación nueva. Lo revisé al llegar a casa.,neutral,Good packaging but average quality.,negative
+FB-0027,Ok. Fue una compra para el trabajo. Nuevo formato. Lo compartí con otra persona.,positive,Ok.,neutral
+FB-0032,Poor quality and disappointing service. I bought it online. Same packaging. Delivery was on Friday.,negative,Poor quality and disappointing service.,positive
+FB-0037,Very happy with this purchase. Lo probé durante un viaje. Formato individual. Lo guardé para después.,positive,Very happy with this purchase.,negative
+FB-0042,Very happy with this purchase. It was part of my weekly shopping. Formato individual. I used it during the weekend.,positive,Very happy with this purchase.,negative
+FB-0046,Poor quality and disappointing service. Lo elegí por el empaque. Regular package. Lo compartí con otra persona.,negative,Poor quality and disappointing service.,positive
+FB-0049,Good packaging but average quality. It was a weekend purchase. Nuevo formato. I stored it on a shelf.,neutral,Good packaging but average quality.,positive
+FB-0053,"Fresh and reliable, I recommend it. Lo encontré en el supermercado. Tamaño familiar. It arrived in a box.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0063,"Not bad at all, I really like it. I compared it with my usual brand. Tamaño familiar. I stored it on a shelf.",positive,"Not bad at all, I really like it.",negative
+FB-0067,"Fresh and reliable, I recommend it. Lo compré para la familia. Tamaño pequeño. Lo abrí por la mañana.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0070,Poor quality and disappointing service. Lo elegí por el empaque. Standard size. It arrived in a box.,negative,Poor quality and disappointing service.,positive
+FB-0074,"Fresh and reliable, I recommend it. It was a weekend purchase. Nuevo formato. La entrega fue el lunes.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0078,Good packaging but average quality. Lo compré para la familia. Formato individual. I stored it on a shelf.,neutral,Good packaging but average quality.,positive
+FB-0081,Very happy with this purchase. It was part of my weekly shopping. Presentación nueva. It arrived in a box.,positive,Very happy with this purchase.,negative
+FB-0095,Very happy with this purchase. I tried it after a friend mentioned it. Tamaño familiar. I stored it on a shelf.,positive,Very happy with this purchase.,negative
+FB-0098,Good packaging but average quality. Lo probé durante un viaje. Same packaging. I stored it on a shelf.,neutral,Good packaging but average quality.,positive
+FB-0099,"Fresh and reliable, I recommend it. Lo encontré en el supermercado. Standard size. It arrived in a box.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0105,"Not bad at all, I really like it. Lo encontré en el supermercado. Edición habitual. I used it during the weekend.",positive,"Not bad at all, I really like it.",negative
+FB-0108,Good packaging but average quality. Lo elegí por el empaque. Tamaño pequeño. It arrived in a box.,neutral,Good packaging but average quality.,positive
+FB-0110,"Fresh and reliable, I recommend it. Lo compré para la familia. Nuevo formato. I opened it after lunch.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0116,"Not bad at all, I really like it. It was a weekend purchase. Regular package. I used it during the weekend.",positive,"Not bad at all, I really like it.",negative
+FB-0117,"Fresh and reliable, I recommend it. Fue una compra para el trabajo. Regular package. I stored it on a shelf.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0120,Good packaging but average quality. Lo compré para la familia. The usual size. It arrived in a box.,neutral,Good packaging but average quality.,positive
+FB-0121,Very happy with this purchase. I compared it with my usual brand. Regular package. Lo abrí por la mañana.,positive,Very happy with this purchase.,negative
+FB-0130,"It's ok, nothing special. Lo probé durante un viaje. Formato individual. I stored it on a shelf.",neutral,"It's ok, nothing special.",neutral
+FB-0136,Poor quality and disappointing service. Fue una compra para el trabajo. Tamaño familiar. Lo revisé al llegar a casa.,negative,Poor quality and disappointing service.,negative
+FB-0139,"Not bad at all, I really like it. I tried it after a friend mentioned it. Tamaño pequeño. Lo guardé para después.",positive,"Not bad at all, I really like it.",negative
+FB-0148,"Fresh and reliable, I recommend it. I bought it online. Same packaging. It arrived in a box.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0150,Poor quality and disappointing service. It was a weekend purchase. Presentación nueva. Lo guardé para después.,negative,Poor quality and disappointing service.,positive
+FB-0151,Me parece normal por este precio. I bought it online. The usual size. Delivery was on Friday.,neutral,Me parece normal por este precio.,positive
+FB-0166,Good packaging but average quality. I tried it after a friend mentioned it. Regular package. I used it during the weekend.,neutral,Good packaging but average quality.,negative
+FB-0168,Me parece normal por este precio. Lo encontré en el supermercado. Tamaño familiar. Lo abrí por la mañana.,neutral,Me parece normal por este precio.,negative
+FB-0169,"Fresh and reliable, I recommend it. Lo usé después de la entrega. Tamaño pequeño. Delivery was on Friday.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0179,Very happy with this purchase. Lo compré para la familia. Formato individual. I opened it after lunch.,positive,Very happy with this purchase.,negative
+FB-0187,Good packaging but average quality. I tried it after a friend mentioned it. Same packaging. I opened it after lunch.,neutral,Good packaging but average quality.,positive
+FB-0193,"Fresh and reliable, I recommend it. Lo usé después de la entrega. Tamaño pequeño. I stored it on a shelf.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0197,Very happy with this purchase. Lo usé después de la entrega. Same packaging. Delivery was on Friday.,positive,Very happy with this purchase.,negative
+FB-0205,Me parece normal por este precio. Lo probé durante un viaje. Tamaño familiar. Lo revisé al llegar a casa.,neutral,Me parece normal por este precio.,negative
+FB-0208,Me parece normal por este precio. Lo encontré en el supermercado. Presentación nueva. Delivery was on Friday.,neutral,Me parece normal por este precio.,positive
+FB-0213,"Fresh and reliable, I recommend it. I received it with another order. Presentación nueva. Lo guardé para después.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0215,Very happy with this purchase. I tried it after a friend mentioned it. Same packaging. Lo compartí con otra persona.,positive,Very happy with this purchase.,negative
+FB-0223,"Fresh and reliable, I recommend it. Lo probé durante un viaje. Same packaging. It arrived in a box.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0230,Me parece normal por este precio. Lo usé después de la entrega. Nuevo formato. Lo guardé para después.,neutral,Me parece normal por este precio.,neutral
+FB-0232,Good packaging but average quality. Fue una compra para el trabajo. Nuevo formato. Lo guardé para después.,neutral,Good packaging but average quality.,neutral
+FB-0233,Ok. Lo compré para la familia. Formato individual. Delivery was on Friday.,neutral,Ok.,positive
+FB-0235,Me parece normal por este precio. It was part of my weekly shopping. Edición habitual. Lo guardé para después.,neutral,Me parece normal por este precio.,positive
+FB-0236,Me parece normal por este precio. Lo elegí por el empaque. Same packaging. Lo abrí por la mañana.,neutral,Me parece normal por este precio.,negative
+FB-0240,Very happy with this purchase. It was a weekend purchase. Tamaño pequeño. I opened it after lunch.,positive,Very happy with this purchase.,negative
+FB-0249,Good packaging but average quality. Fue una compra para el trabajo. Standard size. It arrived in a box.,neutral,Good packaging but average quality.,positive
+FB-0251,Very happy with this purchase. It was a weekend purchase. Regular package. La entrega fue el lunes.,positive,Very happy with this purchase.,negative
+FB-0253,"It's ok, nothing special. Lo probé durante un viaje. Regular package. I stored it on a shelf.",neutral,"It's ok, nothing special.",neutral
+FB-0254,Poor quality and disappointing service. Lo compré para la familia. The usual size. La entrega fue el lunes.,negative,Poor quality and disappointing service.,positive
+FB-0260,Me parece normal por este precio. It was part of my weekly shopping. Nuevo formato. Lo revisé al llegar a casa.,neutral,Me parece normal por este precio.,negative
+FB-0272,Me parece normal por este precio. I tried it after a friend mentioned it. Standard size. Lo revisé al llegar a casa.,neutral,Me parece normal por este precio.,negative
+FB-0273,"It's ok, nothing special. I compared it with my usual brand. The usual size. Lo revisé al llegar a casa.",neutral,"It's ok, nothing special.",neutral
+FB-0281,Good packaging but average quality. I received it with another order. Regular package. I opened it after lunch.,neutral,Good packaging but average quality.,positive
+FB-0282,Very happy with this purchase. Lo encontré en el supermercado. Standard size. Lo revisé al llegar a casa.,positive,Very happy with this purchase.,negative
+FB-0283,Good packaging but average quality. Lo encontré en el supermercado. Tamaño familiar. Lo abrí por la mañana.,neutral,Good packaging but average quality.,negative
+FB-0285,Ok. I compared it with my usual brand. Regular package. I stored it on a shelf.,positive,Ok.,positive
+FB-0286,Poor quality and disappointing service. Fue una compra para el trabajo. Nuevo formato. Lo abrí por la mañana.,negative,Poor quality and disappointing service.,positive
+FB-0288,"Fresh and reliable, I recommend it. Fue una compra para el trabajo. The usual size. I stored it on a shelf.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0296,"Fresh and reliable, I recommend it. I bought it online. Nuevo formato. I opened it after lunch.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0300,Very happy with this purchase. Lo usé después de la entrega. Presentación nueva. I opened it after lunch.,positive,Very happy with this purchase.,negative
+FB-0303,Very happy with this purchase. I bought it online. Tamaño familiar. Delivery was on Friday.,positive,Very happy with this purchase.,negative
+FB-0313,"It's ok, nothing special. Fue una compra para el trabajo. Nuevo formato. Delivery was on Friday.",neutral,"It's ok, nothing special.",neutral
+FB-0322,"Fresh and reliable, I recommend it. I bought it online. Regular package. Lo abrí por la mañana.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0327,Very happy with this purchase. Lo encontré en el supermercado. Tamaño familiar. It arrived in a box.,positive,Very happy with this purchase.,negative
+FB-0331,"Fresh and reliable, I recommend it. It was part of my weekly shopping. Regular package. Delivery was on Friday.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0337,Ok. Lo compré para la familia. The usual size. I opened it after lunch.,negative,Ok.,positive
+FB-0339,"It's ok, nothing special. I compared it with my usual brand. Nuevo formato. I used it during the weekend.",neutral,"It's ok, nothing special.",neutral
+FB-0341,Poor quality and disappointing service. It was part of my weekly shopping. The usual size. It arrived in a box.,negative,Poor quality and disappointing service.,positive
+FB-0350,Very happy with this purchase. Lo probé durante un viaje. Edición habitual. I used it during the weekend.,positive,Very happy with this purchase.,negative
+FB-0351,Me parece normal por este precio. Fue una compra para el trabajo. Formato individual. Lo compartí con otra persona.,neutral,Me parece normal por este precio.,positive
+FB-0352,"Not bad at all, I really like it. Lo probé durante un viaje. The usual size. I opened it after lunch.",positive,"Not bad at all, I really like it.",negative
+FB-0358,"Not bad at all, I really like it. Lo probé durante un viaje. Same packaging. I opened it after lunch.",positive,"Not bad at all, I really like it.",negative
+FB-0359,Poor quality and disappointing service. Lo elegí por el empaque. Formato individual. Lo revisé al llegar a casa.,negative,Poor quality and disappointing service.,negative
+FB-0361,"Fresh and reliable, I recommend it. Lo encontré en el supermercado. Tamaño familiar. Lo abrí por la mañana.",positive,"Fresh and reliable, I recommend it.",negative
+FB-0363,Very happy with this purchase. Fue una compra para el trabajo. Standard size. I stored it on a shelf.,positive,Very happy with this purchase.,negative
+FB-0364,"Not bad at all, I really like it. Lo probé durante un viaje. Tamaño pequeño. Delivery was on Friday.",positive,"Not bad at all, I really like it.",negative
+FB-0370,"Not bad at all, I really like it. Lo compré para la familia. Presentación nueva. Lo guardé para después.",positive,"Not bad at all, I really like it.",negative
+FB-0378,"It's ok, nothing special. It was part of my weekly shopping. The usual size. Lo compartí con otra persona.",neutral,"It's ok, nothing special.",positive
+FB-0382,Ok. It was a weekend purchase. Formato individual. Lo guardé para después.,positive,Ok.,negative
+FB-0385,"Fresh and reliable, I recommend it. It was a weekend purchase. Regular package. Delivery was on Friday.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0391,"Not bad at all, I really like it. Lo usé después de la entrega. Tamaño familiar. It arrived in a box.",positive,"Not bad at all, I really like it.",negative
+FB-0392,"Not bad at all, I really like it. It was part of my weekly shopping. Presentación nueva. Lo abrí por la mañana.",positive,"Not bad at all, I really like it.",negative
+FB-0397,Very happy with this purchase. I received it with another order. Same packaging. Lo revisé al llegar a casa.,positive,Very happy with this purchase.,negative
+FB-0406,"Fresh and reliable, I recommend it. Lo compré para la familia. Nuevo formato. I stored it on a shelf.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0407,"Not bad at all, I really like it. I received it with another order. The usual size. I stored it on a shelf.",positive,"Not bad at all, I really like it.",negative
+FB-0409,Very happy with this purchase. I received it with another order. Nuevo formato. La entrega fue el lunes.,positive,Very happy with this purchase.,negative
+FB-0425,"Fresh and reliable, I recommend it. It was a weekend purchase. Tamaño pequeño. Lo revisé al llegar a casa.",positive,"Fresh and reliable, I recommend it.",negative
+FB-0434,"It's ok, nothing special. I received it with another order. Formato individual. La entrega fue el lunes.",neutral,"It's ok, nothing special.",positive
+FB-0438,"Not bad at all, I really like it. It was part of my weekly shopping. Formato individual. Lo compartí con otra persona.",positive,"Not bad at all, I really like it.",negative
+FB-0443,Ok. It was part of my weekly shopping. Same packaging. Lo revisé al llegar a casa.,neutral,Ok.,negative
+FB-0445,Me parece normal por este precio. Fue una compra para el trabajo. Tamaño pequeño. It arrived in a box.,neutral,Me parece normal por este precio.,positive
+FB-0446,"Fresh and reliable, I recommend it. I received it with another order. Edición habitual. It arrived in a box.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0448,Very happy with this purchase. I compared it with my usual brand. Nuevo formato. It arrived in a box.,positive,Very happy with this purchase.,negative
+FB-0450,"Fresh and reliable, I recommend it. I bought it online. The usual size. Lo revisé al llegar a casa.",positive,"Fresh and reliable, I recommend it.",negative
+FB-0453,Good packaging but average quality. It was part of my weekly shopping. Nuevo formato. I opened it after lunch.,neutral,Good packaging but average quality.,positive
+FB-0455,Good packaging but average quality. I tried it after a friend mentioned it. Regular package. Lo abrí por la mañana.,neutral,Good packaging but average quality.,negative
+FB-0457,Me parece normal por este precio. It was part of my weekly shopping. Regular package. Lo compartí con otra persona.,neutral,Me parece normal por este precio.,positive
+FB-0465,"Not bad at all, I really like it. Lo compré para la familia. Nuevo formato. Lo abrí por la mañana.",positive,"Not bad at all, I really like it.",negative
+FB-0469,"Fresh and reliable, I recommend it. Lo encontré en el supermercado. Same packaging. Lo compartí con otra persona.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0470,Poor quality and disappointing service. Lo probé durante un viaje. Presentación nueva. La entrega fue el lunes.,negative,Poor quality and disappointing service.,positive
+FB-0487,Ok. I tried it after a friend mentioned it. Nuevo formato. I opened it after lunch.,neutral,Ok.,negative
+FB-0490,Very happy with this purchase. Lo compré para la familia. Standard size. Lo revisé al llegar a casa.,positive,Very happy with this purchase.,negative
+FB-0491,Ok. Lo compré para la familia. Formato individual. I stored it on a shelf.,neutral,Ok.,positive
+FB-0492,Poor quality and disappointing service. Lo compré para la familia. Tamaño pequeño. I opened it after lunch.,negative,Poor quality and disappointing service.,positive
+FB-0493,Good packaging but average quality. Lo compré para la familia. Formato individual. It arrived in a box.,neutral,Good packaging but average quality.,positive
+FB-0495,"Fresh and reliable, I recommend it. I tried it after a friend mentioned it. Standard size. It arrived in a box.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0497,"Not bad at all, I really like it. Fue una compra para el trabajo. Tamaño pequeño. Lo compartí con otra persona.",positive,"Not bad at all, I really like it.",neutral
+FB-0503,Ok. Lo encontré en el supermercado. Tamaño pequeño. Delivery was on Friday.,negative,Ok.,negative
+FB-0510,"Fresh and reliable, I recommend it. I tried it after a friend mentioned it. Standard size. Lo revisé al llegar a casa.",positive,"Fresh and reliable, I recommend it.",negative
+FB-0517,Me parece normal por este precio. Lo compré para la familia. The usual size. I used it during the weekend.,neutral,Me parece normal por este precio.,positive
+FB-0520,Good packaging but average quality. I received it with another order. Tamaño pequeño. La entrega fue el lunes.,neutral,Good packaging but average quality.,positive
+FB-0522,"It's ok, nothing special. Lo usé después de la entrega. Standard size. Lo abrí por la mañana.",neutral,"It's ok, nothing special.",neutral
+FB-0532,Ok. It was a weekend purchase. Same packaging. I opened it after lunch.,neutral,Ok.,positive
+FB-0533,Very happy with this purchase. Fue una compra para el trabajo. Same packaging. I stored it on a shelf.,positive,Very happy with this purchase.,negative
+FB-0535,"Not bad at all, I really like it. Lo usé después de la entrega. Tamaño pequeño. I stored it on a shelf.",positive,"Not bad at all, I really like it.",negative
+FB-0536,Ok. Lo usé después de la entrega. Tamaño pequeño. I stored it on a shelf.,positive,Ok.,positive
+FB-0538,"It's ok, nothing special. Lo elegí por el empaque. Tamaño familiar. I used it during the weekend.",neutral,"It's ok, nothing special.",negative
+FB-0539,Me parece normal por este precio. I bought it online. Formato individual. La entrega fue el lunes.,neutral,Me parece normal por este precio.,positive
+FB-0548,Ok. I tried it after a friend mentioned it. Edición habitual. Lo guardé para después.,positive,Ok.,negative
+FB-0549,Poor quality and disappointing service. Lo usé después de la entrega. Nuevo formato. Delivery was on Friday.,negative,Poor quality and disappointing service.,positive
+FB-0550,Very happy with this purchase. I bought it online. Standard size. I stored it on a shelf.,positive,Very happy with this purchase.,negative
+FB-0559,Me parece normal por este precio. I tried it after a friend mentioned it. Formato individual. La entrega fue el lunes.,neutral,Me parece normal por este precio.,negative
+FB-0561,Good packaging but average quality. I bought it online. The usual size. La entrega fue el lunes.,neutral,Good packaging but average quality.,positive
+FB-0566,Very happy with this purchase. I compared it with my usual brand. Tamaño familiar. I stored it on a shelf.,positive,Very happy with this purchase.,negative
+FB-0572,Me parece normal por este precio. I tried it after a friend mentioned it. Tamaño familiar. Lo abrí por la mañana.,neutral,Me parece normal por este precio.,negative
+FB-0573,Poor quality and disappointing service. Lo elegí por el empaque. Tamaño familiar. Lo compartí con otra persona.,negative,Poor quality and disappointing service.,positive
+FB-0586,Poor quality and disappointing service. I tried it after a friend mentioned it. Presentación nueva. Lo guardé para después.,negative,Poor quality and disappointing service.,negative
+FB-0587,Ok. Lo probé durante un viaje. Nuevo formato. I stored it on a shelf.,negative,Ok.,positive
+FB-0594,"Not bad at all, I really like it. I tried it after a friend mentioned it. Presentación nueva. Lo revisé al llegar a casa.",positive,"Not bad at all, I really like it.",negative
+FB-0601,"Not bad at all, I really like it. Fue una compra para el trabajo. Standard size. I opened it after lunch.",positive,"Not bad at all, I really like it.",negative
+FB-0608,"Not bad at all, I really like it. Lo usé después de la entrega. Edición habitual. La entrega fue el lunes.",positive,"Not bad at all, I really like it.",negative
+FB-0613,Ok. Fue una compra para el trabajo. The usual size. I used it during the weekend.,positive,Ok.,neutral
+FB-0616,"It's ok, nothing special. I bought it online. Presentación nueva. I stored it on a shelf.",neutral,"It's ok, nothing special.",neutral
+FB-0622,"Fresh and reliable, I recommend it. It was part of my weekly shopping. The usual size. Lo abrí por la mañana.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0623,"Fresh and reliable, I recommend it. Lo probé durante un viaje. Same packaging. I used it during the weekend.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0626,"Not bad at all, I really like it. It was part of my weekly shopping. Tamaño pequeño. I stored it on a shelf.",positive,"Not bad at all, I really like it.",negative
+FB-0628,Poor quality and disappointing service. I bought it online. Regular package. It arrived in a box.,negative,Poor quality and disappointing service.,positive
+FB-0629,"It's ok, nothing special. Lo usé después de la entrega. Formato individual. I opened it after lunch.",neutral,"It's ok, nothing special.",neutral
+FB-0635,Ok. It was a weekend purchase. Tamaño pequeño. Lo compartí con otra persona.,positive,Ok.,positive
+FB-0640,"Fresh and reliable, I recommend it. Lo elegí por el empaque. Formato individual. Delivery was on Friday.",positive,"Fresh and reliable, I recommend it.",positive
+FB-0649,"It's ok, nothing special. Lo compré para la familia. Tamaño pequeño. It arrived in a box.",neutral,"It's ok, nothing special.",neutral

@@ -64,10 +64,17 @@ def plot_weekly(weekly, cutoff, scope, out):
     )
 
 
-def plot_forecast(predictions, example, scope, out):
+def plot_forecast(
+    predictions, example, scope, out, country=None, weights=None, baseline="rolling_13"
+):
     d = predictions.loc[predictions.segment.eq(example)].sort_values("week_start")
+    if country is not None:
+        d = d.loc[d.country.eq(country)]
+    if d.empty or d.week_start.duplicated().any():
+        raise ValueError("Choose one nonempty country/segment forecast series.")
     fig, ax = figure(
-        "Observed sales vs. one-week forecast", f"{scope} | series {example}"
+        "Observed sales vs. one-week forecast",
+        f"{scope} | {d.country.iloc[0]} / {example}",
     )
     ax.plot(d.week_start, d.units_sold, color=NAVY, lw=2.3, label="Observed")
     ax.plot(
@@ -77,36 +84,51 @@ def plot_forecast(predictions, example, scope, out):
         lw=2.2,
         marker="o",
         ms=3,
-        label="RF + XGBoost (50/50)",
+        label="Selected ensemble",
+    )
+    ax.plot(
+        d.week_start,
+        d[baseline],
+        color=MUTED,
+        lw=1.5,
+        ls="--",
+        label=f"{baseline.removeprefix('rolling_')}-week mean",
     )
     ax.set_ylim(0, max(d.units_sold.max(), d.ensemble.max()) * 1.15)
     ax.xaxis.set_major_locator(mdates.AutoDateLocator(minticks=4, maxticks=7))
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
     ax.set_ylabel("Units", color=MUTED)
-    ax.legend(frameon=False, loc="upper left", ncols=2)
+    ax.legend(frameon=False, loc="upper left", ncols=2, fontsize=9)
     save(
         fig,
         out / "forecast_vs_actual.png",
-        "Series selected by training volume. Each prediction uses previously observed weeks, including prior holdout weeks.",
+        "One country/segment; observed history updates weekly. Ensemble weights selected using earlier validation periods.",
     )
 
 
 def plot_models(metrics, scope, out):
     labels = {
         "naive": "Last-week baseline",
+        "rolling_4": "4-week mean",
+        "rolling_8": "8-week mean",
+        "rolling_13": "13-week mean",
+        "rolling_26": "26-week mean",
         "random_forest": "Random Forest",
         "xgboost": "XGBoost",
-        "ensemble": "RF + XGBoost",
+        "ridge": "Ridge + seasonal terms",
+        "ensemble": "Selected ensemble",
     }
     d = metrics.set_index("model").reindex(list(labels))
-    fig, ax = figure("Forecast error against a simple baseline", scope)
+    fig, ax = figure(
+        "Forecast error against stronger baselines", scope, size=(10.5, 7.5)
+    )
     ax.grid(False)
     ax.grid(axis="x", color=GRID)
     fig.subplots_adjust(left=0.25)
     bars = ax.barh(
         [labels[k] for k in d.index],
         d.mae,
-        color=[MUTED, BLUE, BLUE, TEAL],
+        color=[MUTED] * 5 + [BLUE, BLUE, BLUE, TEAL],
         height=0.52,
     )
     ax.invert_yaxis()
@@ -123,7 +145,7 @@ def plot_models(metrics, scope, out):
     save(
         fig,
         out / "model_comparison.png",
-        "Same final holdout and target for all models. Parameters and the 50/50 ensemble were fixed before evaluation.",
+        "Same target and dates for every model. Ensemble configuration and weights use only earlier temporal validation.",
     )
 
 
@@ -132,13 +154,22 @@ def plot_errors(predictions, scope, out):
         absolute_error=(predictions.units_sold - predictions.ensemble).abs()
     )
     by = (
-        d.groupby("segment").absolute_error.mean().sort_values(ascending=False).head(12)
+        d.groupby(["country", "segment"])
+        .absolute_error.mean()
+        .sort_values(ascending=False)
+        .head(12)
     )
     fig, ax = figure("Where the ensemble misses", scope, size=(10.5, 6.5))
-    fig.subplots_adjust(left=0.24)
+    fig.subplots_adjust(left=0.35)
     ax.grid(False)
     ax.grid(axis="x", color=GRID)
-    ax.barh(by.index.astype(str), by.values, color=BLUE, height=0.56)
+    labels = [
+        textwrap.fill(f"{country} / {segment}", 30)
+        if d.country.nunique() > 1
+        else str(segment)
+        for country, segment in by.index
+    ]
+    ax.barh(labels, by.values, color=BLUE, height=0.56)
     ax.invert_yaxis()
     ax.set_xlim(0, by.max() * 1.22)
     for i, v in enumerate(by):
@@ -237,7 +268,7 @@ def plot_pricing(results, out):
 def plot_sentiment(metrics, matrix, out):
     fig, ax = figure(
         "Sentiment on unseen text templates",
-        "SIMULATION | Logistic regression + bigrams | template-group holdout",
+        "SIMULATION | word + character TF-IDF / logistic regression | template-group holdout",
         size=(8.5, 6.6),
     )
     fig.subplots_adjust(left=0.21, right=0.87, bottom=0.19)
@@ -271,11 +302,86 @@ def plot_shap(importance, scope, out):
     fig.subplots_adjust(left=0.34)
     ax.grid(False)
     ax.grid(axis="x", color=GRID)
-    names = [v.replace("numeric__", "").replace("category__", "") for v in d.feature]
+    names = [
+        textwrap.fill(
+            v.replace("numeric__", "")
+            .replace("category__", "")
+            .replace("num__", "")
+            .replace("dow__dow_", "weekday "),
+            32,
+        )
+        for v in d.feature
+    ]
     ax.barh(names, d.mean_abs_shap, color=BLUE, height=0.57)
     ax.set_xlabel("Mean absolute SHAP contribution (units)", color=MUTED)
     save(
         fig,
         out / "shap_global.png",
-        "Training tree-path reference; sampled holdout rows. Averaged RF/XGBoost contributions reconstruct the 50/50 ensemble.",
+        "Tree-path and linear training references. Weighted RF/XGBoost/Ridge contributions reconstruct the ensemble.",
+    )
+
+
+def plot_daily(predictions, metrics, out):
+    scope = f"REAL DATA | UCI Online Retail II | UK | {predictions.date.min():%d %b} - {predictions.date.max():%d %b %Y}"
+    fig, ax = figure("Next-day paid-order forecasts", scope, size=(12, 6.5))
+    ax.plot(
+        predictions.date,
+        predictions.orders,
+        color=NAVY,
+        lw=1.8,
+        label="Recorded orders",
+    )
+    ax.plot(
+        predictions.date,
+        predictions.ensemble,
+        color=TEAL,
+        lw=1.7,
+        label="Selected ensemble",
+    )
+    ax.set_ylim(0, max(predictions.orders.max(), predictions.ensemble.max()) * 1.12)
+    ax.set_xlim(predictions.date.min(), predictions.date.max())
+    ax.xaxis.set_major_locator(mdates.MonthLocator())
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
+    ax.set_ylabel("Distinct retained orders per day", color=MUTED)
+    ax.legend(frameon=False, loc="upper left", ncols=2)
+    save(
+        fig,
+        out / "daily_forecast.png",
+        f"{len(predictions)} chronological test days. Each next-day forecast uses prior observed days. This target differs from weekly SKU units.",
+    )
+    labels = {
+        "weekly_naive": "Previous same weekday",
+        "random_forest": "Random Forest",
+        "xgboost": "XGBoost",
+        "ridge": "Ridge + seasonal terms",
+        "ensemble": "Selected ensemble",
+    }
+    fig, ax = figure(
+        "Daily forecast error: ensemble vs. baseline", scope, size=(10.5, 6.2)
+    )
+    fig.subplots_adjust(left=0.29)
+    ax.grid(False)
+    ax.grid(axis="x", color=GRID)
+    d = metrics.set_index("model").reindex(list(labels))
+    bars = ax.barh(
+        [labels[k] for k in d.index],
+        d.mae,
+        color=[MUTED, BLUE, BLUE, BLUE, TEAL],
+        height=0.52,
+    )
+    ax.invert_yaxis()
+    ax.set_xlim(0, d.mae.max() * 1.27)
+    for bar, value in zip(bars, d.mae):
+        ax.text(
+            value + d.mae.max() * 0.02,
+            bar.get_y() + bar.get_height() / 2,
+            f"{value:.2f}",
+            va="center",
+            color=NAVY,
+        )
+    ax.set_xlabel("Mean absolute error (orders per day) | lower is better", color=MUTED)
+    save(
+        fig,
+        out / "model_comparison.png",
+        f"All models forecast the same {len(predictions)} days. Configuration and blend weights use three earlier 28-day validation folds.",
     )

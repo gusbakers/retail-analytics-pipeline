@@ -64,12 +64,14 @@ def test_sentiment_keeps_negation_and_checks_unseen_vocabulary():
                 }
             )
     result, heldout, cm, model = evaluate_sentiment(pd.DataFrame(rows))
-    vocabulary = model.named_steps["tfidfvectorizer"].vocabulary_
+    vocabulary = dict(model.named_steps["featureunion"].transformer_list)[
+        "word"
+    ].vocabulary_
     assert all(
         f"uniqueword{int(family.removeprefix('family'))}" not in vocabulary
         for family in heldout.template_id.unique()
     )
-    assert cm.sum() == len(heldout) and len(result) == 6
+    assert cm.sum() == len(heldout) and len(result) == 10
 
 
 def test_original_demand_generator_is_preserved():

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "market-insights-portfolio"
-version = "1.0.0"
-description = "Reproducible retail analytics, weekly sales forecasting, and explicitly simulated pricing and NLP cases."
+version = "1.1.0"
+description = "Real daily retail operations forecasting, weekly demand research and explicitly simulated pricing and NLP diagnostics."
 requires-python = ">=3.11"
 dependencies = [
   "numpy==2.3.5", "pandas==2.2.3", "scipy==1.17.0",
